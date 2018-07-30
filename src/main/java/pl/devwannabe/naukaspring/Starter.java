@@ -19,19 +19,8 @@ public class Starter implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Quest saveThePrincess = new Quest("Save the princess");
-        Quest killDragon = new Quest("Kill the dragon");
-        Knight lancelot = new Knight("Lancelot", 29, saveThePrincess);
-        Knight percival = new Knight("Percival",31);
-        percival.setQuest(killDragon);
 
-        System.out.println(BLUE +
-                castle + RESET_COLOR);
-        System.out.println(BLUE +
-                lancelot +
-                RESET_COLOR);
-        System.out.println(BLUE +
-                percival +
-                RESET_COLOR);
+        System.out.println(BLUE + castle + RESET_COLOR);
+
     }
 }

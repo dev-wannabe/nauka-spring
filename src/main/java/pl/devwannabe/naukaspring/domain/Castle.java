@@ -1,5 +1,9 @@
 package pl.devwannabe.naukaspring.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,9 +14,14 @@ import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
 @Component
+@PropertySource("classpath:castle.properties")
 public class Castle {
 
-    private String name = "East Watch";
+    @Value("${my.castle.name:East Watch}")
+    private String name;
+
+    @Autowired
+    Knight knight;
 
     public Castle() {
 
@@ -32,6 +41,6 @@ public class Castle {
 
     @Override
     public String toString() {
-        return "Here is a castle called. " + name;
+        return "Here is a castle called " + name + ". Inhabited by a knight. " + knight;
     }
 }
