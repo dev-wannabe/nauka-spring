@@ -29,4 +29,9 @@ public class Castle {
         System.out.println(BLUE + "The castle will be tear down: " +
                 name + RESET_COLOR);
     }
+
+    @Override
+    public String toString() {
+        return "Here is a castle called. " + name;
+    }
 }
