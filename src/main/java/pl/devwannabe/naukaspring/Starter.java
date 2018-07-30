@@ -8,6 +8,9 @@ import pl.devwannabe.naukaspring.domain.Quest;
 @Component
 public class Starter implements CommandLineRunner {
 
+    public static final String BLUE = "\u001B[34m";
+    public static final String RESET_COLOR = "\u001B[0m";
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -17,11 +20,11 @@ public class Starter implements CommandLineRunner {
         Knight percival = new Knight("Percival",31);
         percival.setQuest(killDragon);
 
-        System.out.println("\u001B[33m" +
+        System.out.println(BLUE +
                 lancelot +
-                "\u001B[0m");
-        System.out.println("\u001B[33m" +
+                RESET_COLOR);
+        System.out.println(BLUE +
                 percival +
-                "\u001B[0m");
+                RESET_COLOR);
     }
 }
