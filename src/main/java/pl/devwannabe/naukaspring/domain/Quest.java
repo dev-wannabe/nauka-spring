@@ -1,11 +1,14 @@
 package pl.devwannabe.naukaspring.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Quest {
 
     private String description;
 
-    public Quest(String description) {
-        this.description = description;
+    public Quest() {
+        this.description = "Save the princess";
     }
 
     @Override
