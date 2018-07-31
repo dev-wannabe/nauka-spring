@@ -12,7 +12,7 @@ public class Quest {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return description;
     }
 }

@@ -10,16 +10,14 @@ import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 @Component
 public class Knight {
 
-    @Value("Lancelot")
-    private String name;
-
+    private String name = "Lancelot";
     private int age = 29;
     private Quest quest;
 
     public Knight() {
 
     }
-    
+
     @Autowired
     public void setQuest(Quest quest){
         System.out.println(BLUE +"I'm injecting a quest!" + RESET_COLOR);

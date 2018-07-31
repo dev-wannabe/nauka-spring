@@ -1,13 +1,12 @@
 package pl.devwannabe.naukaspring.domain;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-
 
 import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
@@ -21,8 +20,18 @@ public class Castle {
 
     Knight knight;
 
+    public Castle() {
+
+    }
+
+    @Autowired
     public Castle(Knight knight) {
         this.knight = knight;
+    }
+
+    Castle(Knight knight, String name) {
+        this.knight = knight;
+        this.name = name;
     }
 
     @PostConstruct
