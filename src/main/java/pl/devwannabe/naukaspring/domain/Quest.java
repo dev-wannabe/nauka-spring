@@ -1,8 +1,5 @@
 package pl.devwannabe.naukaspring.domain;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class Quest {
 
     private String description;
