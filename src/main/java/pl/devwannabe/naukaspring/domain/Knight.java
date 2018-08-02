@@ -18,8 +18,8 @@ public class Knight {
         this.age = age;
     }
 
-    public void setQuest(Quest quest){
-        System.out.println(BLUE +"I'm injecting a quest!" + RESET_COLOR);
+    public void setQuest(Quest quest) {
+        System.out.println(BLUE + "I'm injecting a quest!" + RESET_COLOR);
         this.quest = quest;
     }
 
