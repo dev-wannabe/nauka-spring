@@ -15,7 +15,7 @@
 
     <bean id="quest" class="pl.devwannabe.naukaspring.domain.Quest"/>
 
-    <bean id="knight" class="pl.devwannabe.naukaspring.domain.Knight">
+    <bean id="knight" class="pl.devwannabe.naukaspring.domain.Knight" scope="prototype">
             <constructor-arg index="0" value="Lancelot"/>
             <constructor-arg index="1" value="29"/>
             <property name="quest" ref="quest"/>

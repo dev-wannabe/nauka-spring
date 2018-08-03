@@ -1,10 +1,19 @@
 package pl.devwannabe.naukaspring.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
+@Component
 public class Castle {
 
+    @Value("${my.castle.name:East Watch}")
     private String name;
 
     Knight knight;
@@ -13,6 +22,7 @@ public class Castle {
 
     }
 
+    @Autowired
     public Castle(Knight knight) {
         this.knight = knight;
     }
@@ -20,16 +30,6 @@ public class Castle {
     Castle(Knight knight, String name) {
         this.knight = knight;
         this.name = name;
-    }
-
-    public void build() {
-        System.out.println(BLUE + "A castle was built: " +
-                name + RESET_COLOR);
-    }
-
-    public void tearDown() {
-        System.out.println(BLUE + "The castle will be tear down: " +
-                name + RESET_COLOR);
     }
 
     public void setName(String name) {
