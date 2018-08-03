@@ -19,5 +19,7 @@ public class Starter implements CommandLineRunner {
 
         System.out.println(BLUE + castle + RESET_COLOR);
 
+
+
     }
 }
