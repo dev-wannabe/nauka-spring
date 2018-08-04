@@ -27,9 +27,6 @@ public class Starter implements CommandLineRunner {
         tournament.duel();
         System.out.println(BLUE + tournament + RESET_COLOR);
 
-        System.out.println(BLUE + castle + RESET_COLOR);
-
-
 
     }
 }

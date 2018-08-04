@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:castle.properties")
 public class NaukaSpringApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(NaukaSpringApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(NaukaSpringApplication.class, args);
+    }
 }

@@ -13,12 +13,19 @@
     <context:component-scan base-package="pl.devwannabe"/>
     <import resource="classpath:config/castle-config.xml"/>
 
-    <bean id="quest" class="pl.devwannabe.naukaspring.domain.Quest"/>
+    <bean id="quest" class="pl.devwannabe.naukaspring.domain.Quest" scope="prototype"/>
 
-    <bean id="knight" class="pl.devwannabe.naukaspring.domain.Knight" scope="prototype">
+    <bean id="lancelot" class="pl.devwannabe.naukaspring.domain.Knight"
+          scope="prototype" primary="true">
             <constructor-arg index="0" value="Lancelot"/>
             <constructor-arg index="1" value="29"/>
             <property name="quest" ref="quest"/>
+    </bean>
+
+    <bean id="percivale" class="pl.devwannabe.naukaspring.domain.Knight" scope="prototype">
+        <constructor-arg index="0" value="Perrcivale"/>
+        <constructor-arg index="1" value="25"/>
+        <property name="quest" ref="quest"/>
     </bean>
 
 </beans>

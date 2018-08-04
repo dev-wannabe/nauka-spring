@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
-@Component
-@Scope("prototype")
+
 public class Knight {
 
     private String name;
