@@ -1,31 +1,39 @@
 package pl.devwannabe.naukaspring.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 public class Tournament {
 
     @Autowired
-    @Qualifier(value = "percival")
-    Knight knight;
+    List<Knight> knights;
+//    Map<String, Knight> knights;
+//    Set<Knight> knights;
 
     public Tournament() {
 
     }
 
     public void duel() {
-        knight.setAge(knight.getAge() + 1);
+       // knight.setAge(knight.getAge() + 1);
 
     }
 
-    public void setKnight(Knight knight) {
-        this.knight = knight;
+    public void setKnight(List <Knight> knights) {
+        this.knights = knights;
     }
+
 
     @Override
     public String toString() {
-        return "The Knight takes part in the Tournament: " + knight;
+        return "The Knights takes part in the Tournament: \n" +
+                knights.stream().map(Object::toString).collect(Collectors.joining("\n"));
+
     }
 }

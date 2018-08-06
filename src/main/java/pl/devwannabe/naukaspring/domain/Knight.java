@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
@@ -25,6 +27,19 @@ public class Knight {
         this.age = age;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Knight knight = (Knight) o;
+        return age == knight.age;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(age);
+    }
+
     @Autowired
     public void setQuest(Quest quest) {
         System.out.println(BLUE + "I'm injecting a quest!" + RESET_COLOR);
@@ -38,7 +53,6 @@ public class Knight {
     public int getAge() {
         return age;
     }
-
 
     @Override
     public String toString() {

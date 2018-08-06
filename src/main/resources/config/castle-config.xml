@@ -20,7 +20,19 @@
     </bean>
 
     <bean id="turniej" class="pl.devwannabe.naukaspring.domain.Tournament">
-        <property name="knight" ref="percival"/>
+        <property name="knights" >
+            <!--           <list>
+                           <ref bean="percivale"/>
+                           <ref bean="lancelot"/>
+                           </list>
+            -->
+
+            <map>
+                <entry key="lancelot" value-ref="lancelot"/>
+                <entry key="percival" value-ref="percival"/>
+            </map>
+
+        </property>
     </bean>
 
 </beans>

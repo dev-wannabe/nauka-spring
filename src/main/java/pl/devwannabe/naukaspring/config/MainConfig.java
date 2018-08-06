@@ -1,9 +1,6 @@
 package pl.devwannabe.naukaspring.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import pl.devwannabe.naukaspring.domain.Castle;
 import pl.devwannabe.naukaspring.domain.Knight;
 import pl.devwannabe.naukaspring.domain.Quest;
 
@@ -30,9 +27,9 @@ public class MainConfig {
 
     @Bean(name="percival")
     public Knight createKnightBean() {
-        Knight percivale = new Knight("Percival", 25);
-        percivale.setQuest(createQuest());
-        return percivale;
+        Knight percival = new Knight("Percival", 25);
+        percival.setQuest(createQuest());
+        return percival;
     }
 
 }
