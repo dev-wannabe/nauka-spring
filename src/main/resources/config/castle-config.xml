@@ -10,17 +10,18 @@
 
     <!-- bean definitions here -->
 
-    <context:property-placeholder location="classpath:castle.properties"/>
+    <context:property-placeholder location="classpath:knightRepository.properties"/>
 
-    <bean id="zamek" class="pl.devwannabe.naukaspring.domain.Castle"
+    <bean id="zamek" class="pl.devwannabe.naukaspring.domain.repository.KnightRepository"
           init-method="build"
           destroy-method="tearDown">
         <constructor-arg index="0" ref="lancelot"/>
-        <property name="name" value="${my.castle.name:East Watch}"/>
+        <property name="name" value="${my.knightRepository.name:East Watch}"/>
     </bean>
 
     <bean id="turniej" class="pl.devwannabe.naukaspring.domain.Tournament">
         <property name="knights" >
+
             <!--           <list>
                            <ref bean="percivale"/>
                            <ref bean="lancelot"/>

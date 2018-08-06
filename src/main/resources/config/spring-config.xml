@@ -11,7 +11,7 @@
     <!-- bean definitions here -->
 
     <context:component-scan base-package="pl.devwannabe"/>
-    <import resource="classpath:config/castle-config.xml"/>
+    <import resource="classpath:config/knightRepository-config.xml"/>
 
     <bean id="quest" class="pl.devwannabe.naukaspring.domain.Quest" scope="prototype"/>
 

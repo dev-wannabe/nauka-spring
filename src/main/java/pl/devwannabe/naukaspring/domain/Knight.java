@@ -1,14 +1,9 @@
 package pl.devwannabe.naukaspring.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import java.util.Objects;
 
 import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
-
 
 public class Knight {
 
@@ -17,9 +12,6 @@ public class Knight {
     private Quest quest;
 
     public Knight() {
-        this.name = "Lancelot";
-        this.age = 29;
-
     }
 
     public Knight(String name, int age) {
@@ -40,9 +32,8 @@ public class Knight {
         return Objects.hash(age);
     }
 
-    @Autowired
     public void setQuest(Quest quest) {
-        System.out.println(BLUE + "I'm injecting a quest!" + RESET_COLOR);
+        System.out.println(BLUE + "I'm setup a quest!" + RESET_COLOR);
         this.quest = quest;
     }
 
@@ -58,7 +49,6 @@ public class Knight {
     public String toString() {
         return "A knight named " + name +
                 "(" + age + ") - current quest: \n" + quest;
-
     }
 
 }
