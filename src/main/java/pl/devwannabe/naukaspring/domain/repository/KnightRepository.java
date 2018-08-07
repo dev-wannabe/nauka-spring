@@ -15,7 +15,7 @@ import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 @Repository
 public class KnightRepository {
 
-    Map<String, Knight> knights = new HashMap<>();
+    private Map<String, Knight> knights = new HashMap<>();
 
     public KnightRepository() {
 
@@ -38,7 +38,7 @@ public class KnightRepository {
     }
 
     @PostConstruct
-    public void build() {
+    public void initiateKnights() {
         System.out.println(BLUE + "The knight was recruited: " +
                 RESET_COLOR);
         createKnight("Lancelot", 29);

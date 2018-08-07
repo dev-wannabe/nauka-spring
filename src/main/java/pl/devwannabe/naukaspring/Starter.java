@@ -24,15 +24,20 @@ public class Starter implements CommandLineRunner {
     @Autowired
     QuestService questService;
 
-
     @Override
     public void run(String... args) throws Exception {
 
+
+        questRepository.createRandomQuest();
+        System.out.println(BLUE + questRepository + RESET_COLOR);
+        questRepository.createRandomQuest();
+        System.out.println(BLUE + questRepository + RESET_COLOR);
+        questRepository.createRandomQuest();
+        System.out.println(BLUE + questRepository + RESET_COLOR);
+
         questService.assignRandomQuest("Lancelot");
         questService.assignRandomQuest("Percival");
+
         System.out.println(BLUE + knightRepository + RESET_COLOR);
-//        System.out.println(BLUE + questRepository + RESET_COLOR);
-
-
     }
 }
