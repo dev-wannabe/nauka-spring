@@ -40,7 +40,6 @@ public class QuestRepository {
         descriptions.add("Kill the dragon");
 
         String description = descriptions.get(RANDOM.nextInt(descriptions.size()));
-        System.out.println(BLUE + "task created: " + description + RESET_COLOR);
         createQuest(description);
     }
 

@@ -27,12 +27,6 @@ public class Starter implements CommandLineRunner {
 
         questRepository.createRandomQuest();
         questRepository.createRandomQuest();
-        questRepository.createRandomQuest();
-        System.out.println(BLUE + questRepository + RESET_COLOR);
-
-        questService.assignRandomQuest("Lancelot");
-        questService.assignRandomQuest("Percival");
-        System.out.println(BLUE + knightRepository + RESET_COLOR);
 
     }
 }
