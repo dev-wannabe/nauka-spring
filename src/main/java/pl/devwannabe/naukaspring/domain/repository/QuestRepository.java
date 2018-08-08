@@ -17,8 +17,7 @@ public class QuestRepository {
     private static final Random RANDOM = new Random();
     private List<Quest> questList = new ArrayList<>();
 
-
-    public void createQuest(String description) {
+    private void createQuest(String description) {
         questList.add(new Quest(description));
     }
 

@@ -1,54 +1,18 @@
 package pl.devwannabe.naukaspring.domain.repository;
 
-import org.springframework.stereotype.Repository;
 import pl.devwannabe.naukaspring.domain.Knight;
 
-import javax.annotation.PostConstruct;
-
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-import static pl.devwannabe.naukaspring.Starter.BLUE;
-import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
+public interface KnightRepository {
 
-@Repository
-public class KnightRepository {
+    void createKnight(String name, int age);
 
-    private Map<String, Knight> knights = new HashMap<>();
+    Collection<Knight> getAllKnights();
 
-    public KnightRepository() {
+    Knight getKnight(String name);
 
-    }
+    void deleteKnight(String name);
 
-    public void createKnight(String name, int age) {
-        knights.put(name, new Knight(name, age));
-    }
-
-    public Collection<Knight> getAllKnights() {
-        return knights.values();
-    }
-
-    public Knight getKnight(String name) {
-        return knights.get(name);
-    }
-
-    public void deleteKnight(String name) {
-        knights.remove(name);
-    }
-
-    @PostConstruct
-    public void initiateKnights() {
-        System.out.println(BLUE + "The knight was recruited: " +
-                RESET_COLOR);
-        createKnight("Lancelot", 29);
-        createKnight("Percival", 25);
-    }
-
-    @Override
-    public String toString() {
-        return "KnightRepository{" +
-                "knights=" + knights +
-                '}';
-    }
+    void initiateKnights();
 }

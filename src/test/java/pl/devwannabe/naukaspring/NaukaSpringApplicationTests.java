@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.devwannabe.naukaspring.domain.repository.KnightRepository;
+import pl.devwannabe.naukaspring.domain.repository.InMemoryKnightRepository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,7 +15,7 @@ public class NaukaSpringApplicationTests {
 
 
 	@Autowired
-    KnightRepository knightRepository;
+    InMemoryKnightRepository inMemoryKnightRepository;
 
 	@Test
 	public void contextLoads() {
@@ -23,9 +23,9 @@ public class NaukaSpringApplicationTests {
 
 	@Test
 	public void testCastle() {
-		String except = "Here is a knightRepository called KnightRepository Black. Inhabited by a knight. A knight named Lancelot(29) - current quest: \n" +
+		String except = "Here is a inMemoryKnightRepository called InMemoryKnightRepository Black. Inhabited by a knight. A knight named Lancelot(29) - current quest: \n" +
 				"Save the princess";
-		assertEquals(except, knightRepository.toString());
+		assertEquals(except, inMemoryKnightRepository.toString());
 	}
 
 }

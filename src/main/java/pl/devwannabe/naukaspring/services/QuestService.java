@@ -9,7 +9,6 @@ import pl.devwannabe.naukaspring.domain.repository.QuestRepository;
 import java.util.List;
 import java.util.Random;
 
-
 @Service
 public class QuestService {
 

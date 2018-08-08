@@ -2,14 +2,12 @@ package pl.devwannabe.naukaspring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import pl.devwannabe.naukaspring.domain.repository.KnightRepository;
 import pl.devwannabe.naukaspring.domain.repository.QuestRepository;
 import pl.devwannabe.naukaspring.services.QuestService;
 
 @Component
-@Scope("singleton")
 public class Starter implements CommandLineRunner {
 
     public static final String BLUE = "\u001B[34m";
@@ -27,17 +25,14 @@ public class Starter implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-
         questRepository.createRandomQuest();
-        System.out.println(BLUE + questRepository + RESET_COLOR);
         questRepository.createRandomQuest();
-        System.out.println(BLUE + questRepository + RESET_COLOR);
         questRepository.createRandomQuest();
         System.out.println(BLUE + questRepository + RESET_COLOR);
 
         questService.assignRandomQuest("Lancelot");
         questService.assignRandomQuest("Percival");
-
         System.out.println(BLUE + knightRepository + RESET_COLOR);
+
     }
 }
