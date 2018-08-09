@@ -11,7 +11,6 @@ import java.util.Map;
 import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
-
 public class InMemoryKnightRepository implements KnightRepository {
 
     private Map<String, Knight> knights = new HashMap<>();
