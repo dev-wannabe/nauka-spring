@@ -3,25 +3,37 @@
 <head>
     <title>Knights List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script type="text/javascript"
+            src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
 </head>
 <body>
-<h1>Knights </h1>
-<table>
-    <thead>
-    <tr>
-        <td>The name of a knight</td>
-        <td>Age</td>
-    </tr>
-    </thead>
 
-    <tbody th:each="knight : ${knights}">
-    <tr>
-        <td th:text="${knight.name}"></td>
-        <td th:text="${knight.age}"></td>
+<div class="container">
 
-    </tr>
-    </tbody>
-</table>
+    <h1>Knights </h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>The name of a knight</td>
+            <td>Age</td>
+        </tr>
+        </thead>
 
+        <tbody th:each="knight : ${knights}">
+        <tr>
+            <td th:text="${knight.name}"></td>
+            <td th:text="${knight.age}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
 </body>
 </html>
