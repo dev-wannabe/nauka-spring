@@ -8,6 +8,8 @@ public interface KnightRepository {
 
     void createKnight(String name, int age);
 
+    void createKnight(Knight knight);
+
     Collection<Knight> getAllKnights();
 
     Knight getKnight(String name);

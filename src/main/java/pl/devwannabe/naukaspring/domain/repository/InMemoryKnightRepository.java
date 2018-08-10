@@ -18,10 +18,14 @@ public class InMemoryKnightRepository implements KnightRepository {
     public InMemoryKnightRepository() {
 
     }
-
     @Override
     public void createKnight(String name, int age) {
         knights.put(name, new Knight(name, age));
+    }
+
+    @Override
+    public void createKnight(Knight knight) {
+        knights.put(knight.getName(), knight);
     }
 
     @Override

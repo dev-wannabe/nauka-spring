@@ -25,14 +25,17 @@
         </tr>
         </thead>
 
-        <tbody th:each="knight : ${knights}">
-        <tr>
+        <tbody>
+        <tr th:each="knight : ${knights}">
             <td th:text="${knight.name}"></td>
             <td th:text="${knight.age}"></td>
 
         </tr>
         </tbody>
     </table>
+    <div class="row">
+        <a href="/newknight">Recruit a new knight</a>
+    </div>
 
 </div>
 </body>

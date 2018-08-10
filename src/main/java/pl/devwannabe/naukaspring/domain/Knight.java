@@ -58,5 +58,4 @@ public class Knight {
         return "A knight named " + name +
                 "(" + age + ") - current quest: \n" + quest;
     }
-
 }
