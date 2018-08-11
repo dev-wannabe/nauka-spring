@@ -7,8 +7,11 @@ import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
 public class Knight {
 
+    private int id;
     private String name;
     private int age;
+    private int level;
+
     private Quest quest;
 
     public Knight() {
@@ -17,6 +20,7 @@ public class Knight {
     public Knight(String name, int age) {
         this.name = name;
         this.age = age;
+        this.level = 1;
     }
 
     @Override
@@ -37,6 +41,14 @@ public class Knight {
         this.quest = quest;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -51,6 +63,14 @@ public class Knight {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     @Override
