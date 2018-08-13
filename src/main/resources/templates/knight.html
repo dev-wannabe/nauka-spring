@@ -15,7 +15,11 @@
 <body>
 
 <div class="container">
+
     <h2>knight details:</h2>
+
+    Current time: <span th:text=" ${timecomponent.time}"/> <br/>
+    Gold: <span th:text=" ${playerInformation.gold}"/>
 
     <p th:text="${knight.name}"></p>
     <p th:text="${knight.age}"></p>

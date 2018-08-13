@@ -15,7 +15,11 @@
 <body>
 
 <div class="container">
+
     <h2>Add new knight:</h2>
+
+    Current time: <span th:text=" ${timecomponent.time}"/> <br/>
+    Gold: <span th:text=" ${playerInformation.gold}"/>
 
     <form class="form-horizontal" th:object="${knight}" th:action="@{/knights}" th:method="post">
         <div class="form-group">
