@@ -14,7 +14,7 @@ import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
 public class InMemoryKnightRepository implements KnightRepository {
 
-    private Map<Integer, Knight> knights = new HashMap<>();
+    public Map<Integer, Knight> knights = new HashMap<>();
 
     public InMemoryKnightRepository() {
 
@@ -28,6 +28,7 @@ public class InMemoryKnightRepository implements KnightRepository {
 
     @Override
     public void createKnight(Knight knight) {
+        knight.setId(getNewId());
         knights.put(knight.getId(), knight);
     }
 
@@ -44,8 +45,6 @@ public class InMemoryKnightRepository implements KnightRepository {
 
     @Override
     public void deleteKnight(Integer id) {
-        System.out.println(knights);
-        System.out.println("Removing " + id);
         knights.remove(id);
     }
 
@@ -74,7 +73,7 @@ public class InMemoryKnightRepository implements KnightRepository {
         if(knights.isEmpty()){
             return 0;
         } else {
-          Integer integer = knights.keySet().stream().max(Integer::max).get();
+          Integer integer = knights.keySet().stream().max((o1, o2) -> o1.compareTo(o2)).get();
           return integer +1;
         }
     }

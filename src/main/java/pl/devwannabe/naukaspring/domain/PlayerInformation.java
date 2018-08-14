@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class PlayerInformation {
 
+    private int gold;
+
     public int getGold() {
         return gold;
     }
@@ -15,7 +17,4 @@ public class PlayerInformation {
     public void setGold(int gold) {
         this.gold = gold;
     }
-
-    private int gold;
-
 }
