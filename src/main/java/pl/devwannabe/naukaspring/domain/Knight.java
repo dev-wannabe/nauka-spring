@@ -52,7 +52,12 @@ public class Knight {
 
     public void setQuest(Quest quest) {
         System.out.println(BLUE + "I'm setup a quest!" + RESET_COLOR);
+        quest.setStarted(true);
         this.quest = quest;
+    }
+
+    public Quest getQuest() {
+        return quest;
     }
 
     public int getId() {

@@ -1,6 +1,7 @@
 package pl.devwannabe.naukaspring.domain.repository;
 
 import pl.devwannabe.naukaspring.domain.Knight;
+import pl.devwannabe.naukaspring.utils.Ids;
 
 import javax.annotation.PostConstruct;
 
@@ -22,13 +23,13 @@ public class InMemoryKnightRepository implements KnightRepository {
     @Override
     public void createKnight(String name, int age) {
         Knight newKnight = new Knight(name, age);
-        newKnight.setId(getNewId());
+        newKnight.setId(Ids.generateNewId(knights.keySet()));
         knights.put(newKnight.getId(), newKnight);
     }
 
     @Override
     public void createKnight(Knight knight) {
-        knight.setId(getNewId());
+        knight.setId(Ids.generateNewId(knights.keySet()));
         knights.put(knight.getId(), knight);
     }
 
@@ -69,12 +70,4 @@ public class InMemoryKnightRepository implements KnightRepository {
                 '}';
     }
 
-    private int getNewId() {
-        if(knights.isEmpty()){
-            return 0;
-        } else {
-          Integer integer = knights.keySet().stream().max((o1, o2) -> o1.compareTo(o2)).get();
-          return integer +1;
-        }
-    }
 }

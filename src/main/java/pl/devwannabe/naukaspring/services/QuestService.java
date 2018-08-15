@@ -8,6 +8,7 @@ import pl.devwannabe.naukaspring.domain.repository.QuestRepository;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestService {
@@ -15,7 +16,6 @@ public class QuestService {
     @Autowired
     KnightRepository knightRepository;
 
-    @Autowired
     QuestRepository questRepository;
 
     private static final Random RANDOM = new Random();
@@ -27,4 +27,15 @@ public class QuestService {
         questRepository.deleteQuest(randomQuest);
     }
 
+    public List<Quest> getAllNotStartedQuests() {
+        List<Quest> QuestsNotStarted = questRepository.getAllQuests().stream()
+                .filter(quest -> !quest.isStarted())
+                .collect(Collectors.toList());
+        return QuestsNotStarted;
+    }
+
+    @Autowired
+    public void setQuestRepository(QuestRepository questRepository) {
+        this.questRepository = questRepository;
+    }
 }
