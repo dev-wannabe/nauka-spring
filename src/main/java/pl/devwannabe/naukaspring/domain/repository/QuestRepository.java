@@ -4,9 +4,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import pl.devwannabe.naukaspring.domain.Quest;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
@@ -15,6 +13,9 @@ import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 public class QuestRepository {
 
     private static final Random RANDOM = new Random();
+
+    Map<Integer, Quest> quests = new HashMap<>();
+
     private List<Quest> questList = new ArrayList<>();
 
     private void createQuest(String description) {

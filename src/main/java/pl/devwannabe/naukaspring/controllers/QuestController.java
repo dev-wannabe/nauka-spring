@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.devwannabe.naukaspring.domain.Knight;
 import pl.devwannabe.naukaspring.domain.Quest;
@@ -28,5 +29,11 @@ public class QuestController {
         model.addAttribute("knight", knight);
         model.addAttribute("notStartedQuests", notStartedQuests);
         return "assignQuest";
+    }
+
+    @RequestMapping(value = "/assignQuest", method = RequestMethod.POST)
+    public String assignQuest(Knight knight) {
+        knightService.updateKnight(knight);
+        return "redirect:/knights";
     }
 }

@@ -20,6 +20,7 @@ public class InMemoryKnightRepository implements KnightRepository {
     public InMemoryKnightRepository() {
 
     }
+
     @Override
     public void createKnight(String name, int age) {
         Knight newKnight = new Knight(name, age);
@@ -39,9 +40,9 @@ public class InMemoryKnightRepository implements KnightRepository {
     }
 
     @Override
-    public Optional <Knight> getKnight(String name) {
+    public Optional<Knight> getKnight(String name) {
         Optional<Knight> knightByName = knights.values().stream().filter(knight -> knight.getName().equals(name)).findAny();
-        return knightByName ;
+        return knightByName;
     }
 
     @Override
@@ -61,6 +62,11 @@ public class InMemoryKnightRepository implements KnightRepository {
     @Override
     public Knight getKnightById(Integer id) {
         return knights.get(id);
+    }
+
+    @Override
+    public void updateKnight(int id, Knight knight) {
+        knights.put(id, knight);
     }
 
     @Override
