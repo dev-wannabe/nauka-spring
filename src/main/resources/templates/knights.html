@@ -36,7 +36,7 @@
             <td th:text="${knight.name}"></td>
             <td th:text="${knight.level}"></td>
             <td>
-                <span th:if="${knight.quest == null}">Currently no quest<a th:href="${'/assignQuest?knightId='+knight.id}">Assign a quest</a></span>
+                <span th:if="${knight.quest == null}">Currently no quest<a th:href="${'/assignQuest?knightId='+knight.id}"> Assign a quest</a></span>
                 <span th:if="${knight.quest!=null}" th:text="${knight.quest.description}"/>
             </td>
             <td><a th:href="${'/knight?id='+knight.id}">Preview</a></td>

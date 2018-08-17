@@ -26,9 +26,9 @@ public class QuestServiceTests {
 
         List<Quest> quest = new ArrayList<>();
 
-        Quest q1 = new Quest("Test quest 1");
-        Quest q2 = new Quest("Test quest 2");
-        Quest q3 = new Quest("Test quest 3");
+        Quest q1 = new Quest(1,"Test quest 1");
+        Quest q2 = new Quest(2,"Test quest 2");
+        Quest q3 = new Quest(3,"Test quest 3");
 
         q2.setStarted(true);
 

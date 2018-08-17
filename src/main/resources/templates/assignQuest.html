@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add knight</title>
+    <title>Add quest</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <script type="text/javascript"
@@ -16,7 +16,7 @@
 
 <div class="container">
 
-    <h2>Add new knight:</h2>
+    <h2>Add new quest:</h2>
 
     <form class="form-horizontal" th:object="${knight}" th:action="@{/assignQuest}" th:method="post">
         <input type="hidden" th:field="*{id}"/>
@@ -27,7 +27,7 @@
             <label class="control-label">Complete the quest:</label>
             <select th:field="*{quest}">
                 <option th:each="quest : ${notStartedQuests}"
-                        th:value="${quest}"
+                        th:value="${quest.id}"
                         th:text="${quest.description}">
                 </option>
             </select>

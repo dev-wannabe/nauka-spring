@@ -34,6 +34,9 @@ public class QuestController {
     @RequestMapping(value = "/assignQuest", method = RequestMethod.POST)
     public String assignQuest(Knight knight) {
         knightService.updateKnight(knight);
+        Quest quest = knight.getQuest();
+        questService.update(quest);
+
         return "redirect:/knights";
     }
 }

@@ -3,31 +3,28 @@ package pl.devwannabe.naukaspring.domain.repository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import pl.devwannabe.naukaspring.domain.Quest;
+import pl.devwannabe.naukaspring.utils.Ids;
 
 import java.util.*;
-
-import static pl.devwannabe.naukaspring.Starter.BLUE;
-import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
 @Repository
 public class QuestRepository {
 
     private static final Random RANDOM = new Random();
-
     Map<Integer, Quest> quests = new HashMap<>();
 
-    private List<Quest> questList = new ArrayList<>();
-
     private void createQuest(String description) {
-        questList.add(new Quest(description));
+        int newId = Ids.generateNewId(quests.keySet());
+        Quest newQuest = new Quest(newId, description);
+        quests.put(newId, newQuest);
     }
 
     public List<Quest> getAllQuests() {
-        return questList;
+        return new ArrayList<>(quests.values());
     }
 
     public void deleteQuest(Quest quest) {
-        questList.remove(quest);
+        quests.remove(quest.getId());
     }
 
     @Scheduled(fixedDelayString = "${questCreationDelay}")
@@ -44,10 +41,18 @@ public class QuestRepository {
         createQuest(description);
     }
 
+    public void update(Quest quest) {
+        quests.put(quest.getId(), quest);
+    }
+
+    public Quest getQuest(Integer id) {
+        return quests.get(id);
+    }
+
     @Override
     public String toString() {
         return "QuestRepository{" +
-                "questList=" + questList +
+                "questList=" + quests +
                 '}';
     }
 }
