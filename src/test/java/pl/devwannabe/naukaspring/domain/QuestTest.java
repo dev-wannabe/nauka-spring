@@ -22,6 +22,8 @@ public class QuestTest {
         quest.setStarted(true);
         quest.lengthInSeconds = -1;
         assertTrue(quest.isCompleted());
+        //drugi assert żeby wiedzieć czy flaga została ustawiona
+        assertTrue(quest.isCompleted());
     }
 
     @Test
@@ -29,6 +31,7 @@ public class QuestTest {
         Quest quest = new Quest(1, "Test quest");
         quest.setStarted(true);
         quest.lengthInSeconds = 1;
+        assertFalse(quest.isCompleted());
         assertFalse(quest.isCompleted());
 
     }
