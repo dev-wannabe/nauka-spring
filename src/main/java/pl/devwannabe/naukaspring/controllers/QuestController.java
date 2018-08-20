@@ -47,7 +47,9 @@ public class QuestController {
     public String checkQuests() {
         List<Knight> allKnights = knightService.getAllknights();
         allKnights.forEach(knight -> {
-            knight.getQuest().isCompleted();
+            if(knight.getQuest() != null) {
+                knight.getQuest().isCompleted();
+            }
         });
         int currentGold = playerInformation.getGold();
         playerInformation.setGold(currentGold + knightService.collectRewards());

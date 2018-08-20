@@ -1,6 +1,8 @@
 package pl.devwannabe.naukaspring.domain;
 
 import org.hibernate.validator.constraints.Range;
+import pl.devwannabe.naukaspring.domain.repository.InMemoryKnightRepository;
+import pl.devwannabe.naukaspring.domain.repository.QuestRepository;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

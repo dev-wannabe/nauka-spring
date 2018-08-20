@@ -26,4 +26,5 @@ public interface KnightRepository {
    default void updateKnight(int id, Knight knight) {
        throw new NotImplementedException();
    }
+
 }

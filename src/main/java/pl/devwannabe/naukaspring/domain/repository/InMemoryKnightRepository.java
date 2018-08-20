@@ -75,5 +75,4 @@ public class InMemoryKnightRepository implements KnightRepository {
                 "knights=" + knights +
                 '}';
     }
-
 }
