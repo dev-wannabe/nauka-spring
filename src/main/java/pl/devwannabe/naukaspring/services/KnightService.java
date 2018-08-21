@@ -3,16 +3,21 @@ package pl.devwannabe.naukaspring.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.devwannabe.naukaspring.domain.Knight;
+import pl.devwannabe.naukaspring.domain.PlayerInformation;
 import pl.devwannabe.naukaspring.domain.repository.KnightRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Component
 public class KnightService {
 
     @Autowired
     KnightRepository knightRepository;
+
+    @Autowired
+    PlayerInformation playerInformation;
 
     public List<Knight> getAllknights() {
         return new ArrayList<>(knightRepository.getAllKnights());
@@ -23,10 +28,10 @@ public class KnightService {
     }
 
     public Knight getKnight(Integer id) {
-       return knightRepository.getKnightById(id);
+        return knightRepository.getKnightById(id);
     }
 
-    public void deleteKnight (Integer id) {
+    public void deleteKnight(Integer id) {
         knightRepository.deleteKnight(id);
     }
 
@@ -35,16 +40,32 @@ public class KnightService {
     }
 
     public int collectRewards() {
-        int sum = knightRepository.getAllKnights().stream()
-                .filter(knight -> knight.getQuest().isCompleted())
+        Predicate<Knight> knightPredicate = knight -> {
+            if (knight.getQuest() != null) {
+                return knight.getQuest().isCompleted();
+            } else {
+                return false;
+            }
+        };
+            int sum = knightRepository.getAllKnights().stream().filter(knightPredicate)
                 .mapToInt(knight -> knight.getQuest().getReward())
                 .sum();
-
         knightRepository.getAllKnights().stream()
-                .filter(knight -> knight.getQuest().isCompleted())
+                .filter(knightPredicate)
                 .forEach(knight -> {
                     knight.setQuest(null);
                 });
         return sum;
+    }
+
+    public void getMyGold() {
+        List<Knight> allKnights = getAllknights();
+        allKnights.forEach(knight -> {
+            if (knight.getQuest() != null) {
+                knight.getQuest().isCompleted();
+            }
+        });
+        int currentGold = playerInformation.getGold();
+        playerInformation.setGold(currentGold + collectRewards());
     }
 }

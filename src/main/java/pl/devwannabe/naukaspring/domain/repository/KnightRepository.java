@@ -23,8 +23,8 @@ public interface KnightRepository {
 
     Knight getKnightById(Integer id);
 
-   default void updateKnight(int id, Knight knight) {
-       throw new NotImplementedException();
-   }
+    default void updateKnight(int id, Knight knight) {
+        throw new NotImplementedException();
+    }
 
 }

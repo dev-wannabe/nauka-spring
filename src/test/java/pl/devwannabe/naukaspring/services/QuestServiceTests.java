@@ -47,4 +47,5 @@ public class QuestServiceTests {
         assertEquals("Size of returned quest", 2, allNotStartedQuests.size());
         assertThat(allNotStartedQuests, containsInAnyOrder(q1, q3));
     }
+
 }

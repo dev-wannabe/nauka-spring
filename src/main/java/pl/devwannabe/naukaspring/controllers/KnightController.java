@@ -71,7 +71,6 @@ public class KnightController {
             knightService.saveKnight(knight);
             return "redirect:/knights";
         }
-        //TODO troszkę przydługa ta metoda, może przenieść część do servisu
     }
 
     @RequestMapping(value="/knight/delete/{id}")

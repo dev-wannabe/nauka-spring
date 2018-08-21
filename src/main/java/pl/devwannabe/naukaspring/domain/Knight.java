@@ -1,8 +1,6 @@
 package pl.devwannabe.naukaspring.domain;
 
 import org.hibernate.validator.constraints.Range;
-import pl.devwannabe.naukaspring.domain.repository.InMemoryKnightRepository;
-import pl.devwannabe.naukaspring.domain.repository.QuestRepository;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,11 +14,11 @@ public class Knight {
     private int id;
 
     @NotNull
-    @Size(min=2, max=40, message = "The name of the knight can contain from 2 to 40 characters.")
+    @Size(min = 2, max = 40, message = "The name of the knight can contain from 2 to 40 characters.")
     private String name;
 
     @NotNull
-    @Range(min=18, max=60, message = "A knight can not be younger than 18 and older than 60.")
+    @Range(min = 18, max = 60, message = "A knight can not be younger than 18 and older than 60.")
     private int age;
 
     private int level;
@@ -51,8 +49,11 @@ public class Knight {
     }
 
     public void setQuest(Quest quest) {
-        System.out.println(BLUE + "I'm setup a quest!" + RESET_COLOR);
-        quest.setStarted(true);
+
+        if (quest != null) {
+            System.out.println(BLUE + "I'm setup a quest!" + RESET_COLOR);
+            quest.setStarted(true);
+        }
         this.quest = quest;
     }
 

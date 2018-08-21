@@ -42,7 +42,7 @@ public class QuestRepository {
     }
 
     public void update(Quest quest) {
-        quests.put(quest.getId(), quest);
+            quests.put(quest.getId(), quest);
     }
 
     public Quest getQuest(Integer id) {

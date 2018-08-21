@@ -3,6 +3,7 @@ package pl.devwannabe.naukaspring.domain.repository;
 import pl.devwannabe.naukaspring.domain.Knight;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import javax.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.Optional;
