@@ -2,6 +2,7 @@ package pl.devwannabe.naukaspring.domain;
 
 import org.hibernate.validator.constraints.Range;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
@@ -9,8 +10,11 @@ import java.util.Objects;
 import static pl.devwannabe.naukaspring.Starter.BLUE;
 import static pl.devwannabe.naukaspring.Starter.RESET_COLOR;
 
+@Entity
 public class Knight {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @NotNull
@@ -23,6 +27,7 @@ public class Knight {
 
     private int level;
 
+    @OneToOne
     private Quest quest;
 
     public Knight() {

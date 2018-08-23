@@ -1,16 +1,28 @@
 package pl.devwannabe.naukaspring.domain;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "Zadania")
 public class Quest {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "Opis")
     private String description;
+
     private int reward = 100;
     protected int lengthInSeconds = 10;
     private boolean started;
     private boolean completed;
     protected LocalDateTime startDate;
+
+    public Quest() {
+
+    }
 
     public Quest(int id, String description) {
         this.id = id;
