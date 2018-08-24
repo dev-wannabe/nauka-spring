@@ -2,58 +2,57 @@ package pl.devwannabe.naukaspring.domain.repository;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pl.devwannabe.naukaspring.domain.Quest;
-import pl.devwannabe.naukaspring.utils.Ids;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.*;
 
 @Repository
 public class QuestRepository {
 
     private static final Random RANDOM = new Random();
-    Map<Integer, Quest> quests = new HashMap<>();
 
-    private void createQuest(String description) {
-        int newId = Ids.generateNewId(quests.keySet());
-        Quest newQuest = new Quest(newId, description);
-        quests.put(newId, newQuest);
-    }
+    @PersistenceContext
+    private EntityManager em;
+
 
     public List<Quest> getAllQuests() {
-        return new ArrayList<>(quests.values());
+       return em.createQuery("from Quest", Quest.class).getResultList();
     }
 
+    @Transactional
     public void deleteQuest(Quest quest) {
-        quests.remove(quest.getId());
+        em.remove(quest);
+    }
+
+    @Transactional
+    public void update(Quest quest) {
+           em.merge(quest);
+    }
+
+    public Quest getQuest(Integer id) {
+        return em.find(Quest.class, id);
     }
 
     @Scheduled(fixedDelayString = "${questCreationDelay}")
+    @Transactional
     public void createRandomQuest() {
-
         List<String> descriptions = new ArrayList<>();
-
         descriptions.add("Save the princess");
         descriptions.add("Take part in the tournament");
         descriptions.add("Kill gangs of goblins");
         descriptions.add("Kill the dragon");
-
         String description = descriptions.get(RANDOM.nextInt(descriptions.size()));
         createQuest(description);
     }
 
-    public void update(Quest quest) {
-            quests.put(quest.getId(), quest);
-    }
-
-    public Quest getQuest(Integer id) {
-        return quests.get(id);
-    }
-
-    @Override
-    public String toString() {
-        return "QuestRepository{" +
-                "questList=" + quests +
-                '}';
+    @Transactional
+    private void createQuest(String description) {
+        Quest newQuest = new Quest(description);
+        em.persist(newQuest);
+        System.out.println(newQuest);
     }
 
 }

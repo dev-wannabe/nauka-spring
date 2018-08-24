@@ -23,9 +23,6 @@ public class QuestController {
     @Autowired
     QuestService questService;
 
-    @Autowired
-    PlayerInformation playerInformation;
-
     @RequestMapping("/assignQuest")
     public String assignQuest(@RequestParam("knightId") Integer id, Model model) {
         Knight knight = knightService.getKnight(id);

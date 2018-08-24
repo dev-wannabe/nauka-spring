@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.devwannabe.naukaspring.components.TimeComponent;
 import pl.devwannabe.naukaspring.domain.Knight;
 import pl.devwannabe.naukaspring.domain.PlayerInformation;
+import pl.devwannabe.naukaspring.domain.repository.PlayerInformationRepository;
 import pl.devwannabe.naukaspring.services.KnightService;
 
 import javax.validation.Valid;
@@ -26,7 +27,7 @@ public class KnightController {
     TimeComponent timeComponent;
 
     @Autowired
-    PlayerInformation playerInformation;
+    PlayerInformationRepository playerInformationRepository;
 
     @Autowired
     KnightService knightService;
@@ -34,6 +35,7 @@ public class KnightController {
     @RequestMapping("/knights")
     public String getKnights(Model model) {
         List<Knight> allKnigts = knightService.getAllknights();
+        PlayerInformation playerInformation = playerInformationRepository.getFirst();
         model.addAttribute("knights", allKnigts);
         model.addAttribute("timecomponent", timeComponent);
         model.addAttribute("playerInformation", playerInformation);
@@ -45,12 +47,14 @@ public class KnightController {
         Knight knight = knightService.getKnight(id);
         model.addAttribute("knight", knight);
         model.addAttribute("timecomponent", timeComponent);
+        PlayerInformation playerInformation = playerInformationRepository.getFirst();
         model.addAttribute("playerInformation", playerInformation);
         return "knight";
     }
 
     @RequestMapping("/newknight")
     public String createKnight(Model model) {
+        PlayerInformation playerInformation = playerInformationRepository.getFirst();
         model.addAttribute("knight", new Knight());
         model.addAttribute("timecomponent", timeComponent);
         model.addAttribute("playerInformation", playerInformation);

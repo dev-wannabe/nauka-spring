@@ -4,14 +4,12 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Zadania")
 public class Quest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "Opis")
     private String description;
 
     private int reward = 100;
@@ -22,6 +20,10 @@ public class Quest {
 
     public Quest() {
 
+    }
+
+    public Quest(String description) {
+        this.description = description;
     }
 
     public Quest(int id, String description) {
@@ -73,7 +75,7 @@ public class Quest {
     }
 
     public boolean isCompleted() {
-        if(this.completed) {
+        if (this.completed) {
             return this.completed;
         } else {
             LocalDateTime now = LocalDateTime.now();

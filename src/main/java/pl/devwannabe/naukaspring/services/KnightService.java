@@ -2,9 +2,12 @@ package pl.devwannabe.naukaspring.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import pl.devwannabe.naukaspring.domain.Knight;
 import pl.devwannabe.naukaspring.domain.PlayerInformation;
 import pl.devwannabe.naukaspring.domain.repository.KnightRepository;
+import pl.devwannabe.naukaspring.domain.repository.PlayerInformationRepository;
+import pl.devwannabe.naukaspring.domain.repository.QuestRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +20,10 @@ public class KnightService {
     KnightRepository knightRepository;
 
     @Autowired
-    PlayerInformation playerInformation;
+    QuestRepository questRepository;
+
+    @Autowired
+    PlayerInformationRepository playerInformationRepository;
 
     public List<Knight> getAllknights() {
         return new ArrayList<>(knightRepository.getAllKnights());
@@ -47,7 +53,7 @@ public class KnightService {
                 return false;
             }
         };
-            int sum = knightRepository.getAllKnights().stream().filter(knightPredicate)
+        int sum = knightRepository.getAllKnights().stream().filter(knightPredicate)
                 .mapToInt(knight -> knight.getQuest().getReward())
                 .sum();
         knightRepository.getAllKnights().stream()
@@ -58,14 +64,19 @@ public class KnightService {
         return sum;
     }
 
+    @Transactional
     public void getMyGold() {
         List<Knight> allKnights = getAllknights();
         allKnights.forEach(knight -> {
             if (knight.getQuest() != null) {
-                knight.getQuest().isCompleted();
+                boolean completed = knight.getQuest().isCompleted();
+                if (completed) {
+                    questRepository.update(knight.getQuest());
+                }
             }
         });
-        int currentGold = playerInformation.getGold();
-        playerInformation.setGold(currentGold + collectRewards());
+        PlayerInformation first = playerInformationRepository.getFirst();
+        int currentGold = first.getGold();
+        playerInformationRepository.getFirst().setGold(currentGold + collectRewards());
     }
 }

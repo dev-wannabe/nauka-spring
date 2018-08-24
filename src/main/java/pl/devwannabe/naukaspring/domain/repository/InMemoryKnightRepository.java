@@ -41,7 +41,8 @@ public class InMemoryKnightRepository implements KnightRepository {
 
     @Override
     public Optional<Knight> getKnight(String name) {
-        Optional<Knight> knightByName = knights.values().stream().filter(knight -> knight.getName().equals(name)).findAny();
+        Optional<Knight> knightByName = knights.values().stream()
+                .filter(knight -> knight.getName().equals(name)).findAny();
         return knightByName;
     }
 
