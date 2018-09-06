@@ -34,7 +34,7 @@ public class KnightController {
 
     @RequestMapping("/knights")
     public String getKnights(Model model) {
-        List<Knight> allKnigts = knightService.getAllknights();
+        List<Knight> allKnigts = knightService.getAllKnights();
         PlayerInformation playerInformation = playerInformationRepository.getFirst();
         model.addAttribute("knights", allKnigts);
         model.addAttribute("timecomponent", timeComponent);

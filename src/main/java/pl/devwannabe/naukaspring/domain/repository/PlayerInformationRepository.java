@@ -3,7 +3,6 @@ package pl.devwannabe.naukaspring.domain.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pl.devwannabe.naukaspring.domain.PlayerInformation;
-import pl.devwannabe.naukaspring.domain.Quest;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +15,6 @@ public class PlayerInformationRepository {
 
     @Transactional
     public void createPlayerInformation(PlayerInformation playerInformation) {
-        playerInformation = new PlayerInformation();
         em.persist(playerInformation);
     }
 

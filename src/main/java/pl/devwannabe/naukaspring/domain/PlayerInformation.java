@@ -13,6 +13,19 @@ public class PlayerInformation {
     private int id;
 
     private int gold;
+    private String username;
+    private String password;
+    private boolean enabled;
+
+    public PlayerInformation() {
+
+    }
+
+    public PlayerInformation(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.enabled = true;
+    }
 
     public int getGold() {
         return gold;
@@ -20,5 +33,16 @@ public class PlayerInformation {
 
     public void setGold(int gold) {
         this.gold = gold;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerInformation{" +
+                "id=" + id +
+                ", gold=" + gold +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                '}';
     }
 }

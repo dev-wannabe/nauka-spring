@@ -25,7 +25,7 @@ public class KnightService {
     @Autowired
     PlayerInformationRepository playerInformationRepository;
 
-    public List<Knight> getAllknights() {
+    public List<Knight> getAllKnights() {
         return new ArrayList<>(knightRepository.getAllKnights());
     }
 
@@ -66,7 +66,7 @@ public class KnightService {
 
     @Transactional
     public void getMyGold() {
-        List<Knight> allKnights = getAllknights();
+        List<Knight> allKnights = getAllKnights();
         allKnights.forEach(knight -> {
             if (knight.getQuest() != null) {
                 boolean completed = knight.getQuest().isCompleted();
