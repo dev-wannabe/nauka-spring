@@ -29,9 +29,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/knight").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().defaultSuccessUrl("/knights")
+                .formLogin().defaultSuccessUrl("/knights");
+
+        //second the same session invalidate first one
+        httpSecurity.logout().permitAll().invalidateHttpSession(true).deleteCookies("JSESSIONID")
                 .and()
-                .sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true)
+                .sessionManagement().maximumSessions(1).expiredUrl("/login")
                 .sessionRegistry(sessionRegistry());
 
         //h2-console enabled
